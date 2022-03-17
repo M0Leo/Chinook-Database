@@ -1,0 +1,37 @@
+/* Query 1 - query used for the first insight*/
+SELECT City, SUM(total) as total_invoice
+FROM Customer c
+JOIN Invoice i
+ON c.CustomerId = i.CustomerId
+GROUP BY 1
+ORDER BY 2 DESC
+
+/* Query 2 - query used for the second insight*/
+SELECT a.name, COUNT(*) AS Songs 
+FROM Artist a
+JOIN Album al
+ON a.ArtistId = al.ArtistId
+JOIN Track t
+ON al.AlbumId = t.AlbumId
+JOIN Genre g
+ON t.GenreId = g.GenreId 
+WHERE g.name = 'Rock'
+GROUP BY 1
+ORDER BY 2 DESC
+
+/* Query 3 - query used for the third insight*/
+SELECT FirstName, LastName, COUNT(*) AS TotalTimes
+FROM Customer c
+JOIN Invoice i
+ON c.CustomerId = i.CustomerId
+WHERE c.country = 'USA'
+GROUP BY 1
+ORDER BY 3 DESC
+
+/* Query 4 - query used for the fourth insight*/
+SELECT a.name, COUNT(*) AS albums
+FROM Artist a
+JOIN Album al
+ON a.ArtistId = al.ArtistId
+GROUP BY 1
+ORDER BY 2 DESC
